@@ -1,0 +1,20 @@
+#homeCarousel {
+    .carousel-inner {
+        img {
+            width: 70%;
+            border-radius: 10px;
+        }
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.205);
+        }
+    }
+}
+
+@media screen and(max-width:576px) {
+    .carousel-caption {
+        h5 {
+            font-size: 0.8rem;
+        }
+        font-size: 0.8rem;
+    }
+}
