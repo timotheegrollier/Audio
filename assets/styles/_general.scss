@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $gray-400;
+}
+
+nav {
+    .navbar-collapse {
+        flex-grow: 0;
+    }
+    h1 {
+        color: $my-purple;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+    .logo-img {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 70%;
+        }
+    }
+}
