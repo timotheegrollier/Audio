@@ -5,7 +5,14 @@
 
 {% block body %}
 	<div class="container">
-		<h2>Derniers sons :</h2>
+		<h2 class="text-center">Derniers sons :</h2>
 	</div>
-	{{include('partials/carousel.html.twig')}}
+	{{include('home/carousel.html.twig')}}
+	<p class="text-center mt-5">Pour partager vos sons veuillez vous
+		<a href="">
+			inscrire</a>
+		ou vous
+		<a href="">
+			connectez</a>
+	</p>
 {% endblock %}

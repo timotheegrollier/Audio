@@ -1,0 +1,34 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?d9da79420921ff7d155e8cdfe9944364") format("truetype"),
+        url("./flaticon.woff?d9da79420921ff7d155e8cdfe9944364") format("woff"),
+        url("./flaticon.woff2?d9da79420921ff7d155e8cdfe9944364") format("woff2"),
+        url("./flaticon.eot?d9da79420921ff7d155e8cdfe9944364#iefix") format("embedded-opentype"),
+        url("./flaticon.svg?d9da79420921ff7d155e8cdfe9944364#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "outer-space-alien": "\f101",
+);
+
+.flaticon-outer-space-alien:before {
+    content: map-get($flaticon-map, "outer-space-alien");
+}
+
+.flaticon-outer-space-alien {
+    color: $my-purple;
+}

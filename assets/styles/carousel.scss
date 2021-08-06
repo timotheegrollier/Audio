@@ -1,11 +1,29 @@
 #homeCarousel {
     .carousel-inner {
         img {
-            width: 70%;
+            width: 90%;
             border-radius: 10px;
+            position: relative;
         }
         .carousel-caption {
             background: rgba(0, 0, 0, 0.205);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+    .carousel-indicators {
+        justify-content: space-around !important;
+        button {
+            height: 20px !important;
+            width: 20px !important;
+            border-radius: 100%;
         }
     }
 }

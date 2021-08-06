@@ -7,6 +7,9 @@
 body {
     background: $gray-400;
 }
+a {
+    text-decoration: none;
+}
 
 nav {
     .navbar-collapse {
