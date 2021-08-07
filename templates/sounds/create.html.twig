@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AUDIO | Upload
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+		{{form_start(form)}}
+		{{form_row(form.titre)}}
+		{{form_row(form.description)}}
+		<input type="submit" class="btn btn-block btn-success" formnovalidate>
+		{{form_end(form)}}
+	</div>
+
+	{# <div class="return">
+			{% for sound in sounds %}
+				<p>{{sound.titre}}</p>
+				<p>{{sound.description}}</p>
+	
+			{% endfor %}
+		</div> #}
+{% endblock %}

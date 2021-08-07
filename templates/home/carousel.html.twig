@@ -9,24 +9,30 @@
 		<div class="carousel-inner">
 
 
-			<div class="carousel-item active" data-bs-interval="10000">
+			<div class="carousel-item active" data-bs-interval="5000">
 				<img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" class="d-block mx-auto" alt="first-element">
 				<div class="carousel-caption d-block  text-white rounded">
 					<h5>
 						<a href="" class="text-white">
-
-							First slide label
+							{% for key, sound in sounds %}
+								{% if key == 0 %}
+									{{sound.titre}}
+								{% endif %}
+							{% endfor %}
 						</a>
 					</h5>
 				</div>
 			</div>
-			<div class="carousel-item" data-bs-interval="2000">
+			<div class="carousel-item" data-bs-interval="3000">
 				<img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" class="d-block mx-auto" alt="">
 				<div class="carousel-caption d-block text-white rounded">
 					<h5>
 						<a href="" class="text-white">
-
-							Second slide label
+							{% for key, sound in sounds %}
+								{% if key == 1 %}
+									{{sound.titre}}
+								{% endif %}
+							{% endfor %}
 						</a>
 					</h5>
 				</div>
@@ -36,13 +42,17 @@
 				<div class="carousel-caption d-block  rounded">
 					<h5>
 						<a href="" class="text-white">
-
-							Third slide label
+							{% for key, sound in sounds %}
+								{% if key == 2 %}
+									{{sound.titre}}
+								{% endif %}
+							{% endfor %}
 						</a>
 					</h5>
 				</div>
 			</div>
 		</div>
+
 		<button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			<span class="visually-hidden">Previous</span>
