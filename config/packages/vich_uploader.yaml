@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       sound_cover:
+           uri_prefix: /uploads/covers
+           upload_destination: '%kernel.project_dir%/public/uploads/covers'
+           delete_on_update: true
+           delete_on_remove: true

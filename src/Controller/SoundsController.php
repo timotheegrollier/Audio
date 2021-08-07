@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,13 @@ class SoundsController extends AbstractController
         $form = $this->createFormBuilder($sound, [],)
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Pas de cover',
+                'image_uri' => true,
+                'label' => 'Cover'
+            ])
             ->getForm();
 
         $form->handleRequest($request);

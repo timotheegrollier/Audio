@@ -25,3 +25,10 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+
+
+###> CUSTOM ###
+audio.key
+/public/uploads/
+###< CUSTOM ###

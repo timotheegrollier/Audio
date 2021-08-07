@@ -10,7 +10,7 @@
 
 
 			<div class="carousel-item active" data-bs-interval="5000">
-				<img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" class="d-block mx-auto" alt="first-element">
+				<img src="{% for key, sound in sounds %}{% if key == 0 %}uploads/covers/{{sound.imageName}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="first-element">
 				<div class="carousel-caption d-block  text-white rounded">
 					<h5>
 						<a href="" class="text-white">
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="3000">
-				<img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" class="d-block mx-auto" alt="">
+				<img src="{% for key, sound in sounds %}{% if key == 1 %}uploads/covers/{{sound.imageName}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="deuxieme img">
 				<div class="carousel-caption d-block text-white rounded">
 					<h5>
 						<a href="" class="text-white">
@@ -38,8 +38,8 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" class="d-block mx-auto" alt="...">
-				<div class="carousel-caption d-block  rounded">
+				<img src="{% for key, sound in sounds %}{% if key == 2 %}uploads/covers/{{sound.imageName}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="troisieme img">
+				<div class="carousel-caption d-block rounded">
 					<h5>
 						<a href="" class="text-white">
 							{% for key, sound in sounds %}
