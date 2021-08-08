@@ -49,6 +49,7 @@ class Sound
     /**
      * @Vich\UploadableField(mapping="sound_cover", fileNameProperty="imageName")
      * @Assert\Image(maxSize="5M", maxSizeMessage="Votre cover ne doit pas dépasser les {{ limit }} Mo")
+     * @Assert\Image(mimeTypes={"image/jpeg","image/png","image/gif"},mimeTypesMessage="Votre cover n'est pas une image valide(jpg, png, gif)")
      * @var File
      */
     private $imageFile;

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AUDIO | Upload
+{% endblock %}
+{% block body %}
+	<div class="return">
+		<img src="{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png'))| imagine_filter('carousel_img')}}" alt="{{sound.titre}}">
+		<p>{{sound.titre}}</p>
+		<p>{{sound.description}}</p>
+
+
+	</div>
+{% endblock %}

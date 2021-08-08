@@ -32,3 +32,6 @@ yarn-error.log
 audio.key
 /public/uploads/
 ###< CUSTOM ###
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

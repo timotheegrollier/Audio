@@ -24,8 +24,6 @@ class SoundsController extends AbstractController
 
         $sound = new Sound();
         $form = $this->createFormBuilder($sound, [],)
-            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
-            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
@@ -33,6 +31,8 @@ class SoundsController extends AbstractController
                 'image_uri' => true,
                 'label' => 'Cover'
             ])
+            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
+            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
             ->getForm();
 
         $form->handleRequest($request);
@@ -56,8 +56,8 @@ class SoundsController extends AbstractController
      * @Route("/sounds/{id<[0-9]+>}", name="app_listen" ,methods="GET")
      */
 
-    public function show(Sound $sounds): Response
+    public function listen(Sound $sound): Response
     {
-        return $this->render('sounds/show.html.twig', compact('sounds'));
+        return $this->render('sounds/listen.html.twig', compact('sound'));
     }
 }
