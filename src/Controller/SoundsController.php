@@ -49,4 +49,15 @@ class SoundsController extends AbstractController
 
         return $this->render('sounds/create.html.twig', ['form' => $form->createView(), 'sounds' => $sounds]);
     }
+
+
+
+    /**
+     * @Route("/sounds/{id<[0-9]+>}", name="app_listen" ,methods="GET")
+     */
+
+    public function show(Sound $sounds): Response
+    {
+        return $this->render('sounds/show.html.twig', compact('sounds'));
+    }
 }

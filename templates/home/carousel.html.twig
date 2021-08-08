@@ -13,7 +13,7 @@
 				<img src="{% for key, sound in sounds %}{% if key == 0 %}uploads/covers/{{sound.imageName}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="first-element">
 				<div class="carousel-caption d-block  text-white rounded">
 					<h5>
-						<a href="" class="text-white">
+						<a href="{% for key, sound in sounds %}{% if key == 0 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %} " class="text-white">
 							{% for key, sound in sounds %}
 								{% if key == 0 %}
 									{{sound.titre}}

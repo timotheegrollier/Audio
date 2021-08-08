@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AUDIO | Upload
+{% endblock %}
+{% block body %}
+	<div class="return">
+		{% for sound in sounds %}
+			<p>{{sound.titre}}</p>
+			<p>{{sound.description}}</p>
+
+		{% endfor %}
+	</div>
+{% endblock %}
