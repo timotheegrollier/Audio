@@ -7,7 +7,10 @@
 	<div class="container ">
 		<h2 class="text-center homeText">Derniers sons :</h2>
 	</div>
+	{# {% if sounds|length > 0 %} #}
 	{{include('home/carousel.html.twig')}}
+
+	{# {% endif %} #}
 	<p class="text-center mt-5">Pour partager vos sons veuillez vous
 		<a href="">
 			inscrire</a>

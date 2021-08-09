@@ -3,9 +3,13 @@
 {% block title %}AUDIO | Upload
 {% endblock %}
 {% block body %}
-	<div class="return">
-		<img src="{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png'))| imagine_filter('carousel_img')}}" alt="{{sound.titre}}">
-		<p>{{sound.titre}}</p>
+	<div class="container d-flex justify-content-center flex-column align-items-center">
+		<h2>{{sound.titre}}</h2>
+		<div class="audio-player">
+			<img src="{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}">
+			<audio controlslist="nodownload" controls src="/uploads/sounds/{{sound.soundName}}"></audio>
+		</div>
+
 		<p>{{sound.description}}</p>
 
 

@@ -1,16 +1,20 @@
-<div class="container col-12 col-md-6 col-xl-5">
+<div class="container-fluid col-10 col-md-5">
 
-	<div id="homeCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+	<div id="homeCarousel" class="carousel carousel-light slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
 			<button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 			<button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
 			<button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
 		</div>
-		<div class="carousel-inner">
+		<div class="carousel-inner rounded">
 
 
 			<div class="carousel-item active" data-bs-interval="5000">
-				<img src="{% for key, sound in sounds %}{% if key == 0 %}{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png')) | imagine_filter('carousel_img')}}{% endif %}{% endfor %} " class="d-block mx-auto" alt="first-element">
+				{% if sounds|length < 1 %}
+					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
+				{% else %}
+					<img src="{% for key, sound in sounds %}{% if key == 0 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+				{% endif %}
 				<div class="carousel-caption d-block">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 0 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %} " class="text-white">
@@ -24,7 +28,11 @@
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="3000">
-				<img src="{% for key, sound in sounds %}{% if key == 1 %}{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png'))| imagine_filter('carousel_img')}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="deuxieme img">
+				{% if sounds|length < 2 %}
+					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
+				{% else %}
+					<img src="{% for key, sound in sounds %}{% if key == 1 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+				{% endif %}
 				<div class="carousel-caption d-block">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 1 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %}" class="text-white">
@@ -38,7 +46,11 @@
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img src="{% for key, sound in sounds %}{% if key == 2 %}{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png'))| imagine_filter('carousel_img')}}{% endif %}{% endfor %}" class="d-block mx-auto" alt="troisieme img">
+				{% if sounds|length < 3 %}
+					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
+				{% else %}
+					<img src="{% for key, sound in sounds %}{% if key == 2 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+				{% endif %}
 				<div class="carousel-caption d-block">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 2 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %}" class="text-white">

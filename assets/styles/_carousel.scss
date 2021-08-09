@@ -1,10 +1,10 @@
 #homeCarousel {
     .carousel-inner {
         img {
-            width: 70%;
-            border-radius: 10px;
             position: relative;
+            height: 60vh;
         }
+
         .carousel-caption {
             background: rgba(0, 0, 0, 0.39);
             position: absolute;
@@ -20,12 +20,21 @@
             }
         }
     }
+
     .carousel-indicators {
         justify-content: space-around !important;
         button {
-            height: 20px !important;
-            width: 20px !important;
+            height: 15px !important;
+            width: 15px !important;
             border-radius: 100%;
+        }
+    }
+}
+
+@media screen and(max-width:1024px) {
+    .carousel-inner {
+        img {
+            height: 40vh !important;
         }
     }
 }

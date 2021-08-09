@@ -8,7 +8,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,12 +26,30 @@ class SoundsController extends AbstractController
 
         $sound = new Sound();
         $form = $this->createFormBuilder($sound, [],)
+            ->add('soundFile', VichFileType::class, [
+                'required' => true,
+                'allow_delete' => true,
+                'delete_label' => 'supprimer',
+                'label' => 'Votre son (mp3 / ogg / aac) : ',
+                'constraints' => [
+                    new File([
+                        'maxSize' => '100M',
+                        'mimeTypes' => [
+                            "audio/mpeg",
+                            "audio/ogg",
+                            'audio/x-hx-aac-adts',
+                        ],
+                        'mimeTypesMessage' => 'Votre son doit être au format {{ types }}'
+                    ])
+                ]
+            ])
+
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
                 'delete_label' => 'Pas de cover',
                 'image_uri' => true,
-                'label' => 'Cover'
+                'label' => 'Cover image'
             ])
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])

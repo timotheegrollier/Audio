@@ -15,3 +15,4 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 import './bootstrap';
 
 import './flash_timeout'
+import './image_preview'

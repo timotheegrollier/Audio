@@ -6,6 +6,7 @@
 
 body {
     background: $gray-400;
+    height: 100vh;
 }
 a {
     text-decoration: none;
@@ -34,4 +35,10 @@ nav {
 
 .homeText {
     color: $my-purple;
+}
+
+#blah {
+    display: none;
+    height: 150px;
+    border-radius: 10px;
 }

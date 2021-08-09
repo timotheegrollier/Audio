@@ -8,6 +8,12 @@ liip_imagine:
         carousel_img:
             filters:
                 thumbnail:
-                    size: [150,200]
+                    size: [1024,640]
+                    mode: outbound
+                    allow_upscale: true
+        player_img:
+            filters:
+                thumbnail:
+                    size: [400,400]
                     mode: outbound
                     allow_upscale: true

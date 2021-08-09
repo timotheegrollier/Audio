@@ -54,6 +54,23 @@ class Sound
      */
     private $imageFile;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $soundName;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="sounds", fileNameProperty="soundName")
+     * @Assert\NotBlank(message="Vous devez upload un son !")
+     * 
+     * 
+     * @var File|null
+     */
+    private $soundFile;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,7 +112,7 @@ class Sound
         return $this;
     }
 
-
+    // UPLOAD IMAGE (GETTER / SETTER)
 
     public function setImageFile(File $image = null)
     {
@@ -115,5 +132,41 @@ class Sound
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+
+
+    // UPLOAD SON (GETTER / SETTER)
+
+    /**  
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $soundFile
+     */
+    public function setSoundFile(?File $soundFile = null): void
+    {
+        $this->soundFile = $soundFile;
+
+        if (null !== $soundFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->setUpdatedAt(new \DateTimeImmutable());
+        }
+    }
+
+    public function getSoundFile(): ?File
+    {
+        return $this->soundFile;
+    }
+
+
+
+    public function getSoundName(): ?string
+    {
+        return $this->soundName;
+    }
+
+    public function setSoundName(?string $soundName): self
+    {
+        $this->soundName = $soundName;
+
+        return $this;
     }
 }

@@ -1,0 +1,9 @@
+.audio-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    audio {
+        position: absolute;
+    }
+}
