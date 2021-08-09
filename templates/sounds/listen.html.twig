@@ -9,7 +9,7 @@
 	<div class="container d-flex justify-content-around h-75 flex-column align-items-center">
 		<h2>{{sound.titre}}</h2>
 		<div class="audio-player col-12 col-lg-6">
-			<img src="{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="w-75">
+			<img src="{{(sound.imageName ? "uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="w-75">
 			<audio {% if sound.download == false %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 		</div>
 
