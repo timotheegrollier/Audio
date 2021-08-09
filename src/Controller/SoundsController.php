@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -53,6 +54,7 @@ class SoundsController extends AbstractController
             ])
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
+            ->add('download',CheckboxType::class)
             ->getForm();
 
         $form->handleRequest($request);
