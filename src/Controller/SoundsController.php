@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SoundsController extends AbstractController
 {
     /**
-     * @Route("/sounds/create", name="app_sounds_create", methods="GET|POST")
+     * @Route("/sounds/create", name="app_sound_create", methods="GET|POST")
      */
     public function index(Request $request, EntityManagerInterface $em, SoundRepository $soundRepository): Response
     {
@@ -81,5 +81,24 @@ class SoundsController extends AbstractController
     public function listen(Sound $sound): Response
     {
         return $this->render('sounds/listen.html.twig', compact('sound'));
+    }
+
+
+
+
+    /**
+     * @Route("/sounds/{id<[0-9]+>}", name="app_sound_delete" ,methods="DELETE")
+     */
+
+    public function delete(Request $request, Sound $sound, EntityManagerInterface $em): Response
+    {
+        if ($this->isCsrfTokenValid('sound_delete', $request->request->get('csrf_token'))) {
+            $em->remove($sound);
+            $em->flush();
+
+            $this->addFlash('info', 'Votre son à été supprimé !');
+        }
+
+        return $this->redirectToRoute('app_home');
     }
 }
