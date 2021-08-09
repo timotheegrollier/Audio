@@ -70,6 +70,11 @@ class Sound
      */
     private $soundFile;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $download;
+
 
     public function getId(): ?int
     {
@@ -166,6 +171,18 @@ class Sound
     public function setSoundName(?string $soundName): self
     {
         $this->soundName = $soundName;
+
+        return $this;
+    }
+
+    public function getDownload(): ?bool
+    {
+        return $this->download;
+    }
+
+    public function setDownload(bool $download): self
+    {
+        $this->download = $download;
 
         return $this;
     }

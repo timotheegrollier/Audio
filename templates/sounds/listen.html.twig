@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}AUDIO | Upload
 {% endblock %}
 {% block body %}
@@ -7,7 +8,7 @@
 		<h2>{{sound.titre}}</h2>
 		<div class="audio-player">
 			<img src="{{(sound.imageName ? vich_uploader_asset(sound) : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}">
-			<audio controlslist="nodownload" controls src="/uploads/sounds/{{sound.soundName}}"></audio>
+			<audio  {% if sound.download == false %} controlslist="nodownload"{% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 		</div>
 
 		<p>{{sound.description}}</p>
