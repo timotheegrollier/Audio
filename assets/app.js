@@ -16,3 +16,4 @@ import './bootstrap';
 
 import './flash_timeout'
 import './image_preview'
+import './upload_form'

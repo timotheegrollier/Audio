@@ -26,7 +26,7 @@ class SoundsController extends AbstractController
         $sounds = $soundRepository->findAll();
 
         $sound = new Sound();
-        $form = $this->createFormBuilder($sound, [],)
+        $form = $this->createFormBuilder($sound, ['attr' => ['id' => 'uploadForm']],)
             ->add('soundFile', VichFileType::class, [
                 'required' => true,
                 'allow_delete' => true,
@@ -54,7 +54,7 @@ class SoundsController extends AbstractController
             ])
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
-            ->add('download',CheckboxType::class)
+            ->add('download', CheckboxType::class)
             ->getForm();
 
         $form->handleRequest($request);
