@@ -19,15 +19,38 @@ class EditSoundType extends AbstractType
     {
         $isEdit = $options['method'] === 'PUT';
         $builder
+            ->add('soundFile', VichFileType::class, [
+                'required' => true,
+                'label' => 'Votre son (mp3 / ogg / aac) : ',
+                'allow_delete' => false,
+                'download_uri' => false,
+                'asset_helper' => false,
+
+                'constraints' => [
+                    new File([
+                        'maxSize' => '200M',
+                        'mimeTypes' => [
+                            "audio/mpeg",
+                            "audio/ogg",
+                            'audio/x-hx-aac-adts',
+                        ],
+                        'mimeTypesMessage' => 'Votre son doit être au format {{ types }}'
+                    ]),
+                ]
+            ])
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image (JPG or PNG file)',
                 'required' => false,
-                'imagine_pattern' => 'edit_img'
+                'imagine_pattern' => 'edit_img',
+                'allow_delete' => true,
+                'download_uri' => false,
+                'asset_helper' => false,
+
             ])
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
-            ->add('download', CheckboxType::class);
+            ->add('download', CheckboxType::class, ['label' => 'Autoriser les téléchargements']);
     }
 
     public function configureOptions(OptionsResolver $resolver)

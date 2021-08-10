@@ -21,4 +21,10 @@ liip_imagine:
                 upscale:
                     by: 2
                     mode: outbound
-                   
+
+        player_img:
+            filters:
+                thumbnail:
+                    size: [400,400]
+                    mode: outbound
+                    allow_upscale: true            

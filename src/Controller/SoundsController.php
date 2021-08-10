@@ -31,8 +31,6 @@ class SoundsController extends AbstractController
         $form = $this->createFormBuilder($sound, ['attr' => ['id' => 'uploadForm']],)
             ->add('soundFile', VichFileType::class, [
                 'required' => true,
-                'allow_delete' => true,
-                'delete_label' => 'supprimer',
                 'label' => 'Votre son (mp3 / ogg / aac) : ',
                 'constraints' => [
                     new File([
@@ -54,6 +52,7 @@ class SoundsController extends AbstractController
                 'delete_label' => 'Pas de cover',
                 'image_uri' => true,
                 'label' => 'Cover image',
+
             ])
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
