@@ -1,0 +1,43 @@
+nav {
+    .navbar-collapse {
+        flex-grow: 0;
+    }
+    h1 {
+        color: $my-purple;
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+    .logo-img {
+        width: 60px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 70%;
+        }
+    }
+
+    // NAV LINKS
+    .nav-item {
+        animation: 2s ease-in-out;
+        .active {
+            color: $my-purple !important;
+            // ANIM uniquement sur les grands écrans
+            @media screen and(min-width:768px) {
+                animation: nav-anim 0.2s ease-in-out;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+// NAV ANIM
+@keyframes nav-anim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}

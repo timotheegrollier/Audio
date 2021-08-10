@@ -57,7 +57,7 @@ class SoundsController extends AbstractController
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...', 'autocomplete' => 'off']])
-            ->add('download', CheckboxType::class)
+            ->add('download', CheckboxType::class, ['label' => 'Autoriser les téléchargements'])
             ->getForm();
 
         $form->handleRequest($request);
