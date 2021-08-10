@@ -23,9 +23,8 @@ class SoundsController extends AbstractController
     /**
      * @Route("/sounds/create", name="app_sound_create", methods="GET|POST")
      */
-    public function index(Request $request, EntityManagerInterface $em, SoundRepository $soundRepository): Response
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
-        $sounds = $soundRepository->findAll();
 
         $sound = new Sound();
         $form = $this->createFormBuilder($sound, ['attr' => ['id' => 'uploadForm']],)
@@ -55,8 +54,9 @@ class SoundsController extends AbstractController
                 'image_uri' => true,
                 'label' => 'Cover image',
             ])
-            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
-            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
+
+            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...','autocomplete' => 'off']])
+            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...','autocomplete' => 'off']])
             ->add('download', CheckboxType::class)
             ->getForm();
 
@@ -72,7 +72,7 @@ class SoundsController extends AbstractController
         }
 
 
-        return $this->render('sounds/create.html.twig', ['form' => $form->createView(), 'sounds' => $sounds]);
+        return $this->render('sounds/create.html.twig', ['form' => $form->createView()]);
     }
 
 

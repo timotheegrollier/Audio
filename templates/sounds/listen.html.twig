@@ -6,18 +6,24 @@
 {% endblock %}
 {% block body %}
 
+<div class="container-fluid d-flex justify-content-center">
 
-	<div class="container d-flex justify-content-around h-75 flex-column align-items-center">
-		<h2>{{sound.titre}}</h2>
+	<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-4">
+	<h2>{{sound.titre}}</h2>
 		<div class="audio-player col-12 col-lg-6">
-			<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="w-75">
+			<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="col-8">
 			<audio {% if sound.download == false %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
-			<a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger delete-btn">Delete</a>
-			<a href="{{path('app_sound_edit',{id:sound.id})}}">Go</a>
 		</div>
-
-		<p>{{sound.description}}</p>
-
+		<div class="btn-group mt-2 col-12 col-lg-6">
+			
+			
+		<a href="{{path('app_sound_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
+		<a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
+		
+	</div>
+</div>
+	<p>{{sound.description}}</p>
+		
 
 	</div>
 
