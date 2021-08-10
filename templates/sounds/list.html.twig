@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AUDIO |
+{% endblock %}
+
+
+{% block body %}
+	<h1>Liste des sons :</h1>
+	<div class="sounds-list container">
+		{% for sound in sounds %}
+			<div class="sound-card card">
+				<img class="col-5 col-md-3 col-xl-2" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('list_img')}} alt="{{sound.titre ~ " image"}}">
+				<div class="card-body">
+
+					<h2>{{ sound.titre }}</h2>
+					<p>{{ sound.description }}</p>
+				</div>
+			</div>
+
+		{% endfor %}
+		{{ knp_pagination_render(sounds) }}
+	</div>
+
+{% endblock %}

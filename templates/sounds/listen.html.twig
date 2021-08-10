@@ -6,29 +6,29 @@
 {% endblock %}
 {% block body %}
 
-<div class="container-fluid d-flex justify-content-center">
+	<div class="container-fluid d-flex justify-content-center">
 
-	<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-4">
-	<h2>{{sound.titre}}</h2>
-		<div class="audio-player col-12 col-lg-6">
-			<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="col-8">
-			<audio {% if sound.download == false %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
+		<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-4">
+			<h2>{{sound.titre}}</h2>
+			<div class="audio-player col-12 col-lg-6">
+				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png'))}}" alt="{{sound.titre}}" class="col-8">
+				<audio {% if sound.download == false %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
+			</div>
+			<div class="btn-group mt-2 col-12 col-lg-6">
+
+
+				<a href="{{path('app_sounds_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
+				<a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
+
+			</div>
 		</div>
-		<div class="btn-group mt-2 col-12 col-lg-6">
-			
-			
-		<a href="{{path('app_sound_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
-		<a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
-		
-	</div>
-</div>
-	<p>{{sound.description}}</p>
-		
+		<p>{{sound.description}}</p>
+
 
 	</div>
 
 
-	<form id="delete_sound" method="post" style="display:none;" action="{{path('app_sound_delete', {id:sound.id})}}">
+	<form id="delete_sound" method="post" style="display:none;" action="{{path('app_sounds_delete', {id:sound.id})}}">
 		<input type="hidden" name="_method" value="DELETE">
 		<input type="hidden" name="csrf_token" value="{{csrf_token('sound_delete')}}">
 		<input type="submit" value="DELETE">

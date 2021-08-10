@@ -6,22 +6,23 @@ use App\Entity\Sound;
 use App\Form\EditSoundType;
 use App\Repository\SoundRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SoundsController extends AbstractController
 {
     /**
-     * @Route("/sounds/create", name="app_sound_create", methods="GET|POST")
+     * @Route("/sounds/create", name="app_sounds_create", methods="GET|POST")
      */
     public function index(Request $request, EntityManagerInterface $em): Response
     {
@@ -55,8 +56,8 @@ class SoundsController extends AbstractController
                 'label' => 'Cover image',
             ])
 
-            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...','autocomplete' => 'off']])
-            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...','autocomplete' => 'off']])
+            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
+            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...', 'autocomplete' => 'off']])
             ->add('download', CheckboxType::class)
             ->getForm();
 
@@ -90,7 +91,7 @@ class SoundsController extends AbstractController
 
 
     /**
-     * @Route("/sounds/{id<[0-9]+>}/edit", name="app_sound_edit" ,methods={"GET","PUT"})
+     * @Route("/sounds/{id<[0-9]+>}/edit", name="app_sounds_edit" ,methods={"GET","PUT"})
      */
 
     public function edit(Request $request, Sound $sound, EntityManagerInterface $em): Response
@@ -117,7 +118,27 @@ class SoundsController extends AbstractController
 
 
     /**
-     * @Route("/sounds/{id<[0-9]+>}", name="app_sound_delete" ,methods="DELETE")
+     * @Route("/sounds/list", name="app_sounds_list" ,methods="GET")
+     */
+
+    public function list(Request $request, SoundRepository $soundRepository, PaginatorInterface $paginator): Response
+    {
+
+        $donnees = $soundRepository->findBy([], ["createdAt" => 'DESC']);
+        $sounds = $paginator->paginate(
+            $donnees,
+            $request->query->getInt('page', 1),
+            4
+        );
+        return $this->render('sounds/list.html.twig', ['sounds' => $sounds]);
+    }
+
+
+
+
+
+    /**
+     * @Route("/sounds/{id<[0-9]+>}", name="app_sounds_delete" ,methods="DELETE")
      */
 
     public function delete(Request $request, Sound $sound, EntityManagerInterface $em): Response

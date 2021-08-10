@@ -1,0 +1,12 @@
+.sounds-list {
+    display: grid;
+    grid-template-rows: 1fr;
+    .sound-card {
+        flex-direction: row !important;
+        background: #b9b9b9 !important;
+        height: 120px;
+    }
+    .pagination {
+        justify-content: flex-end;
+    }
+}

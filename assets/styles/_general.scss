@@ -33,7 +33,7 @@ nav {
     }
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
@@ -46,4 +46,10 @@ textarea{
     border-radius: 10px;
     height: 100px;
     width: 100px;
+}
+
+.nav-link {
+    .active {
+        color: $my-purple !important;
+    }
 }
