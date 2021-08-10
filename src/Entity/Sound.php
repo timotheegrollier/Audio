@@ -63,7 +63,6 @@ class Sound
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="sounds", fileNameProperty="soundName")
-     * @Assert\NotBlank(message="Vous devez upload un son !")
      * 
      * 
      * @var File|null

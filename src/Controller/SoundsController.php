@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Sound;
+use App\Form\EditSoundType;
 use App\Repository\SoundRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SoundsController extends AbstractController
 {
@@ -41,7 +43,8 @@ class SoundsController extends AbstractController
                             'audio/x-hx-aac-adts',
                         ],
                         'mimeTypesMessage' => 'Votre son doit être au format {{ types }}'
-                    ])
+                    ]),
+                    new NotBlank(['message' => 'Vous devez upload un fichier !'])
                 ]
             ])
 
@@ -50,7 +53,7 @@ class SoundsController extends AbstractController
                 'allow_delete' => true,
                 'delete_label' => 'Pas de cover',
                 'image_uri' => true,
-                'label' => 'Cover image'
+                'label' => 'Cover image',
             ])
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
@@ -81,6 +84,33 @@ class SoundsController extends AbstractController
     public function listen(Sound $sound): Response
     {
         return $this->render('sounds/listen.html.twig', compact('sound'));
+    }
+
+
+
+
+    /**
+     * @Route("/sounds/{id<[0-9]+>}/edit", name="app_sound_edit" ,methods={"GET","PUT"})
+     */
+
+    public function edit(Request $request, Sound $sound, EntityManagerInterface $em): Response
+    {
+
+        $form = $this->createForm(EditSoundType::class, $sound, ['method' => 'PUT']);
+        // dd($sound);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->flush();
+            $this->addFlash('success', 'Pin successfully updated !');
+
+            return $this->redirectToRoute('app_home');
+        }
+
+
+
+        return $this->render('sounds/edit.html.twig', ['sound' => $sound, 'form' => $form->createView()]);
     }
 
 
