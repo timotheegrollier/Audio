@@ -6,7 +6,6 @@
     "require": {
         "php": ">=7.2.5",
         "ext-ctype": "*",
-        "gd": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.2",
