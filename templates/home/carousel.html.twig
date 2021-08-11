@@ -1,4 +1,4 @@
-<div class="container-fluid col-10 col-md-4">
+<div class="container-fluid col-10 col-md-5 col-sm-6  ">
 
 	<div id="homeCarousel" class="carousel carousel-light slide" data-bs-ride="carousel">
 		<div class="carousel-indicators">
@@ -13,7 +13,7 @@
 				{% if sounds|length < 1 %}
 					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
 				{% else %}
-					<img src="{% for key, sound in sounds %}{% if key == 0 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+					<img src="{% for key, sound in sounds %}{% if key == 0 %}{{(sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png") | imagine_filter('carousel')}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
 				<div class="carousel-caption d-flex flex-column">
 					<h5>
@@ -38,7 +38,7 @@
 				{% if sounds|length < 2 %}
 					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
 				{% else %}
-					<img src="{% for key, sound in sounds %}{% if key == 1 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+					<img src="{% for key, sound in sounds %}{% if key == 1 %}{{(sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png") | imagine_filter('carousel')}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
 				<div class="carousel-caption d-flex flex-column">
 					<h5>
@@ -63,7 +63,7 @@
 				{% if sounds|length < 3 %}
 					<img src="{{asset('build/images/placeholder.png')}}" alt="placeholder" class="d-block mx-auto w-100">
 				{% else %}
-					<img src="{% for key, sound in sounds %}{% if key == 2 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
+					<img src="{% for key, sound in sounds %}{% if key == 2 %}{{(sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png")| imagine_filter('carousel')}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
 				<div class="carousel-caption d-flex flex-column">
 					<h5>

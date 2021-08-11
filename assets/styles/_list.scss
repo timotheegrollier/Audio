@@ -2,9 +2,16 @@
     display: grid;
     grid-template-rows: 1fr;
     .sound-card {
-        flex-direction: row !important;
+        display: grid !important;
         background: #b9b9b9 !important;
-        height: 120px;
+        grid-template-rows: 1fr;
+        grid-template-columns: 40% 60%;
+        align-items: center;
+        justify-items: center;
+
+        a {
+            border: 4px rgba(255, 255, 255, 0.925) solid;
+        }
     }
     .pagination {
         justify-content: flex-end;
