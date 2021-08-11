@@ -5,7 +5,7 @@
 			<a class="logo-img" href="{{path('app_home')}}">
 				<img src="{{asset('/build/images/logo.png')}}" alt="logo">
 			</a>
-			<h1 class="d-none d-sm-flex justify-content-center align-items-center">AUDIO</h1>
+			<h1 class="h3 d-none d-sm-flex justify-content-center align-items-center">AUDIO</h1>
 		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -16,15 +16,12 @@
 					<a {% if route_name == "app_home" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href=" {{path('app_home')}} ">Home</a>
 				</li>
 				<li class="nav-item">
-					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
+					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen" or route_name == "app_sounds_search"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
 				</li>
 				<li class="nav-item">
 					<a {% if route_name == "app_sounds_create" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_create')}} ">Upload</a>
 				</li>
-				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
+
 			</li>
 		</div>
 	</div>

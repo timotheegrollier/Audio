@@ -1,16 +1,42 @@
+#selectType {
+    display: flex;
+    align-items: center;
+
+    #form {
+        width: 100%;
+        @extend .mb-3;
+    }
+}
+
 .sounds-list {
+    p {
+        margin: 0 !important;
+    }
     display: grid;
     grid-template-rows: 1fr;
     .sound-card {
         display: grid !important;
         background: #b9b9b9 !important;
-        grid-template-rows: 1fr;
+        grid-template-rows: 10% 90%;
         grid-template-columns: 40% 60%;
+        grid-template-areas:
+            "h h"
+            "i if";
         align-items: center;
         justify-items: center;
+        .card-header {
+            grid-area: h;
+            display: flex;
+            justify-content: center;
+            height: 100% !important;
+        }
 
         a {
             border: 4px rgba(255, 255, 255, 0.925) solid;
+            overflow: hidden;
+        }
+        img:hover {
+            transform: scale(1.1);
         }
     }
     .pagination {

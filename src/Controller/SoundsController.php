@@ -126,13 +126,28 @@ class SoundsController extends AbstractController
     public function list(Request $request, SoundRepository $soundRepository, PaginatorInterface $paginator): Response
     {
 
+        // SEARCH FORM
+        $searchForm =  $this->createFormBuilder(null, ['method' => 'GET', 'attr' => ['id' => 'selectType']])
+            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', 'empty_data' => 'John Doe', "required" => false, 'empty_data' => '', 'empty_value' => 'None Selected'])
+            ->getForm();
+        $searchForm->handleRequest($request);
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            return $this->redirectToRoute('app_sounds_search', $request->query->all());
+        }
+
+
+
+        // ALL SOUNDS & PAGINATION
         $donnees = $soundRepository->findBy([], ["createdAt" => 'DESC']);
         $sounds = $paginator->paginate(
             $donnees,
             $request->query->getInt('page', 1),
             4
         );
-        return $this->render('sounds/list.html.twig', ['sounds' => $sounds]);
+        return $this->render('sounds/list.html.twig', [
+            'sounds' => $sounds,
+            'search_form' => $searchForm->createView(),
+        ]);
     }
 
 

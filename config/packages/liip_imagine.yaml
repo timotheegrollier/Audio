@@ -14,7 +14,7 @@ liip_imagine:
         list_img:
             filters:
                 thumbnail:
-                    size: [600,600]
+                    size: [800,800]
                     mode: outbound
                     allow_upscale: true
                 relative_resize: 

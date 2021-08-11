@@ -5,17 +5,31 @@
 
 
 {% block body %}
-	<h1>Liste des sons :</h1>
-	<div class="sounds-list container">
+	<div class="container">
+		{{form_start(search_form)}}
+		{{form_widget(search_form)}}
+		<input type="submit" value="Search" class="btn btn-success">
+		{{form_end(search_form)}}
+	</div>
+	<div class="sounds-list container mt-2">
 		{% for sound in sounds %}
-			<div class="sound-card card p-4 ">
-				<a href="{{path('app_listen',{id:sound.id})}}" class="d-flex justify-content-center align-items-center col-lg-8 rounded">
+			<div class="sound-card card">
+				<div class="card-header w-100 align-items-center">
+					<p>Posté par
+						<strong>author</strong>
+						{{sound.createdAt|ago}}
+					</p>
+				</div>
+				<a href="{{path('app_listen',{id:sound.id})}}" class="d-flex justify-content-center align-items-center col-xl-6 col-8 rounded">
 					<img class="w-100 shadow" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('list_img')}} alt="{{sound.titre ~ " image"}}">
 				</a>
 				<div class="card-body">
 
-					<h2>{{ sound.titre }}</h2>
-					<p>{{ sound.description }}</p>
+					<h3>{{ sound.titre }}</h3>
+
+					<em>{{sound.type.name}}</em>
+
+
 				</div>
 			</div>
 
