@@ -16,7 +16,7 @@
 					<a {% if route_name == "app_home" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href=" {{path('app_home')}} ">Home</a>
 				</li>
 				<li class="nav-item">
-					<a {% if route_name == "app_sounds_list" %} class="nav-link active" {% elseif route_name == "app_listen" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
+					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
 				</li>
 				<li class="nav-item">
 					<a {% if route_name == "app_sounds_create" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_create')}} ">Upload</a>

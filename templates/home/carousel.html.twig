@@ -15,7 +15,7 @@
 				{% else %}
 					<img src="{% for key, sound in sounds %}{% if key == 0 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
-				<div class="carousel-caption d-block">
+				<div class="carousel-caption d-flex flex-column">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 0 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %} " class="text-white">
 							{% for key, sound in sounds %}
@@ -25,6 +25,13 @@
 							{% endfor %}
 						</a>
 					</h5>
+					{% for key, sound in sounds %}
+						{% if key == 0 %}
+							<p>
+								<em>{{sound.type.name}}</em>
+							</p>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="3000">
@@ -33,7 +40,7 @@
 				{% else %}
 					<img src="{% for key, sound in sounds %}{% if key == 1 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
-				<div class="carousel-caption d-block">
+				<div class="carousel-caption d-flex flex-column">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 1 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %}" class="text-white">
 							{% for key, sound in sounds %}
@@ -43,6 +50,13 @@
 							{% endfor %}
 						</a>
 					</h5>
+					{% for key, sound in sounds %}
+						{% if key == 1 %}
+							<p>
+								<em>{{sound.type.name}}</em>
+							</p>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -51,7 +65,7 @@
 				{% else %}
 					<img src="{% for key, sound in sounds %}{% if key == 2 %}{{sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png"}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
-				<div class="carousel-caption d-block">
+				<div class="carousel-caption d-flex flex-column">
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 2 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %}" class="text-white">
 							{% for key, sound in sounds %}
@@ -61,6 +75,13 @@
 							{% endfor %}
 						</a>
 					</h5>
+					{% for key, sound in sounds %}
+						{% if key == 2 %}
+							<p>
+								<em>{{sound.type.name}}</em>
+							</p>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>

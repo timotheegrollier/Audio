@@ -50,6 +50,7 @@ class EditSoundType extends AbstractType
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...']])
+            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name'])
             ->add('download', CheckboxType::class, ['label' => 'Autoriser les téléchargements']);
     }
 

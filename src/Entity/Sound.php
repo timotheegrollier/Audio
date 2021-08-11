@@ -74,6 +74,13 @@ class Sound
      */
     private $download;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="sounds")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Vous devez choisir le type de son !")
+     */
+    private $type;
+
 
     public function getId(): ?int
     {
@@ -182,6 +189,18 @@ class Sound
     public function setDownload(bool $download): self
     {
         $this->download = $download;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

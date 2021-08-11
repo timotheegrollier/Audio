@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Sound;
+use App\Entity\Type;
 use App\Form\EditSoundType;
 use App\Repository\SoundRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +26,7 @@ class SoundsController extends AbstractController
     /**
      * @Route("/sounds/create", name="app_sounds_create", methods="GET|POST")
      */
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em): Response
     {
 
         $sound = new Sound();
@@ -58,6 +60,7 @@ class SoundsController extends AbstractController
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
             ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...', 'autocomplete' => 'off']])
             ->add('download', CheckboxType::class, ['label' => 'Autoriser les téléchargements'])
+            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name'])
             ->getForm();
 
         $form->handleRequest($request);
@@ -103,7 +106,7 @@ class SoundsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em->flush();
-            $this->addFlash('success', 'Pin successfully updated !');
+            $this->addFlash('success', 'Son édité avec succès');
 
             return $this->redirectToRoute('app_home');
         }
