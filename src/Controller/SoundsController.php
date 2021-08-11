@@ -128,7 +128,7 @@ class SoundsController extends AbstractController
 
         // SEARCH FORM
         $searchForm =  $this->createFormBuilder(null, ['method' => 'GET', 'attr' => ['id' => 'selectType']])
-            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', 'empty_data' => 'John Doe', "required" => false, 'empty_data' => '', 'empty_value' => 'None Selected'])
+            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', 'empty_data' => 'John Doe', "required" => false, 'empty_data' => ''])
             ->getForm();
         $searchForm->handleRequest($request);
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
