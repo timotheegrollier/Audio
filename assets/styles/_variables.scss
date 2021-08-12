@@ -63,3 +63,9 @@ $navbar-dark-hover-color: $white !default;
 $navbar-light-color: rgba($black, 0.4) !default;
 $navbar-light-hover-color: $info !default;
 $navbar-light-active-color: $info !default;
+
+// custom class
+
+.myp {
+    color: $my-purple !important;
+}
