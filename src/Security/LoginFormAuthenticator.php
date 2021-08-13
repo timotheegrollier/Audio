@@ -46,13 +46,23 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+
+        /**@var \Symfony\Component\Security\Core\Authentication\Token $token */
+        /**@var \Symfony\Component\HttpFoundation\Session\Session $session */
+
+
+        $session = $request->getSession();
+        $session->getFlashBag()->add('success', 'Bienvenue ' . $token->getUser()->getName() .  ' !');
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
+        if (isset($_POST['_remember_me'])) {
+            setcookie('rem', '1');
+        }
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
-        throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
+        // throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 
     protected function getLoginUrl(Request $request): string

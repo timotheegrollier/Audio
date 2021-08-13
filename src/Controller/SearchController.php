@@ -21,7 +21,7 @@ class SearchController extends AbstractController
     {
         // SearchForm pour le repasser à la vue
         $searchForm =  $this->createFormBuilder(null, ['method' => 'GET', 'attr' => ['id' => 'selectType']])
-            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', 'empty_data' => 'John Doe', "required" => false, 'empty_data' => ''])
+            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', "required" => false, 'empty_data' => '', 'placeholder' => 'Tous types'])
             ->getForm();
         $searchForm->handleRequest($request);
 

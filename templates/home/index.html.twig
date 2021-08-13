@@ -11,11 +11,16 @@
 	{{include('home/carousel.html.twig')}}
 
 	{# {% endif %} #}
-	<p class="text-center mt-5">Pour partager vos sons veuillez vous
-		<a href="{{path('app_register')}}">
-			inscrire</a>
-		ou vous
-		<a href="">
-			connectez</a>
-	</p>
+
+	{% if app.user %}
+
+		{% else %}
+			<p class="text-center mt-5">Pour partager vos sons veuillez vous
+				<a href="{{path('app_register')}}">
+					inscrire</a>
+				ou vous
+				<a href="{{path('app_login')}}">
+					connectez</a>
+			</p>
+	{% endif %}
 {% endblock %}

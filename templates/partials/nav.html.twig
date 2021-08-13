@@ -18,13 +18,22 @@
 				<li class="nav-item">
 					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen" or route_name == "app_sounds_search"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
 				</li>
-				<li class="nav-item">
-					<a {% if route_name == "app_sounds_create" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_create')}} ">Upload</a>
-				</li>
-				<li class="nav-item">
-					<a {% if route_name == "app_register" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_register')}} ">Inscription</a>
-				</li>
 
+				{% if app.user %}
+					<li class="nav-item">
+						<a {% if route_name == "app_sounds_create" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_create')}} ">Upload</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href=" {{path('app_logout')}} ">Déconnexion</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a {% if route_name == "app_login" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_login')}} ">Connexion</a>
+					</li>
+					<li class="nav-item">
+						<a {% if route_name == "app_register" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_register')}} ">Inscription</a>
+					</li>
+				{% endif %}
 			</li>
 		</div>
 	</div>

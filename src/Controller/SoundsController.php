@@ -29,6 +29,13 @@ class SoundsController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): Response
     {
 
+        // dd($this->getUser());
+
+        if ($this->getUser() === null) {
+            $this->addFlash("error", "Vous devez être connécté pour Upload !");
+            return $this->redirectToRoute('app_login');
+        }
+
         $sound = new Sound();
         $form = $this->createFormBuilder($sound, ['attr' => ['id' => 'uploadForm']],)
             ->add('soundFile', VichFileType::class, [
@@ -128,9 +135,18 @@ class SoundsController extends AbstractController
 
         // SEARCH FORM
         $searchForm =  $this->createFormBuilder(null, ['method' => 'GET', 'attr' => ['id' => 'selectType']])
-            ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name', 'empty_data' => 'John Doe', "required" => false, 'empty_data' => ''])
+            ->add(
+                'type',
+                EntityType::class,
+                [
+                    'class' => Type::class,
+                    'choice_label' => 'name',  "required" => false, 'placeholder' => 'Tous types'
+                ]
+            )
             ->getForm();
+
         $searchForm->handleRequest($request);
+
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             return $this->redirectToRoute('app_sounds_search', $request->query->all());
         }

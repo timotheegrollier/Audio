@@ -5,21 +5,20 @@
 	{{sound.titre}}
 {% endblock %}
 {% block body %}
-
 	<div class="container-fluid d-flex justify-content-center flex-column">
-
 		<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-4">
-			<h2>{{sound.titre}}</h2>
+			<h2 class="myp">{{sound.titre}}</h2>
 			<div class="audio-player col-12 col-lg-6">
 				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="col-8 h-75 rounded">
-				<audio {% if sound.download == false %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
+				<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 			</div>
-			<p class="border-1">{{sound.description}}</p>
-			<div class="btn-group mt-2 col-12 col-lg-6">
-				<a href="{{path('app_sounds_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
-				<a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
-
-			</div>
+			<p>{{sound.description}}</p>
+			{% if app.user %}
+				<div class="btn-group mt-2 col-12 col-lg-6">
+					<a href="{{path('app_sounds_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
+					<a href="#" onclick="event.preventDefault(); confirm('Confirmer la supression ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
+				</div>
+			{% endif %}
 		</div>
 
 
