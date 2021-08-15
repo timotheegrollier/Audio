@@ -13,14 +13,19 @@
 	{# {% endif %} #}
 
 	{% if app.user %}
-
-		{% else %}
-			<p class="text-center mt-5">Pour partager vos sons veuillez vous
-				<a href="{{path('app_register')}}">
-					inscrire</a>
-				ou vous
-				<a href="{{path('app_login')}}">
-					connectez</a>
-			</p>
+		<div class="d-flex flex-column align-items-center justify-content-center">
+			<p class="myp h4 text-uppercase mb-4">Hey
+				{{app.user.name}}
+				!</p>
+			<a href="{{path('app_sounds_create')}}" class="btn btn-success rounded-pill">Let's Share</a>
+		</div>
+	{% else %}
+		<p class="text-center mt-5">Pour partager vos sons veuillez vous
+			<a href="{{path('app_register')}}">
+				inscrire</a>
+			ou vous
+			<a href="{{path('app_login')}}">
+				connectez</a>
+		</p>
 	{% endif %}
 {% endblock %}

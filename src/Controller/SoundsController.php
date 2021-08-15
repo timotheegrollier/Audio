@@ -37,8 +37,9 @@ class SoundsController extends AbstractController
         }
 
         $sound = new Sound();
-        $form = $this->createFormBuilder($sound, ['attr' => ['id' => 'uploadForm']],)
+        $form = $this->createFormBuilder($sound, ['attr' => ['class' => 'uploadForm']],)
             ->add('soundFile', VichFileType::class, [
+                'attr' => ['class' => 'form_soundFile_file'],
                 'required' => true,
                 'label' => 'Votre son (mp3 / ogg / aac) : ',
                 'constraints' => [
@@ -62,6 +63,8 @@ class SoundsController extends AbstractController
                 'delete_label' => 'Pas de cover',
                 'image_uri' => true,
                 'label' => 'Cover image',
+                'attr' => ['class' => 'form_imageFile_file'],
+
 
             ])
 
@@ -107,7 +110,7 @@ class SoundsController extends AbstractController
     public function edit(Request $request, Sound $sound, EntityManagerInterface $em): Response
     {
 
-        $form = $this->createForm(EditSoundType::class, $sound, ['method' => 'PUT']);
+        $form = $this->createForm(EditSoundType::class, $sound, ['method' => 'PUT', 'attr' => ['class' => 'uploadForm']]);
         // dd($sound);
         $form->handleRequest($request);
 

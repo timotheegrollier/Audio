@@ -22,6 +22,7 @@ class EditSoundType extends AbstractType
         $isEdit = $options['method'] === 'PUT';
         $builder
             ->add('soundFile', VichFileType::class, [
+                'attr' => ['class' => 'form_soundFile_file'],
                 'required' => true,
                 'label' => 'Votre son (mp3 / ogg / aac) : ',
                 'allow_delete' => false,
@@ -41,13 +42,12 @@ class EditSoundType extends AbstractType
                 ]
             ])
             ->add('imageFile', VichImageType::class, [
+                'attr' => ['class' => 'form_imageFile_file'],
                 'label' => 'Image (JPG or PNG file)',
                 'required' => false,
                 'imagine_pattern' => 'edit_img',
                 'allow_delete' => true,
                 'download_uri' => false,
-                'asset_helper' => false,
-
             ])
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...']])

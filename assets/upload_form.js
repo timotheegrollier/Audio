@@ -1,9 +1,11 @@
-const uploadForm = document.getElementById('uploadForm');
+const uploadForm = document.querySelector('.uploadForm');
+const submit = document.getElementById("uploadBtn")
 
 if (uploadForm) {
     uploadForm.addEventListener('submit', (e) => {
-        $('#uploadBtn').attr('disabled', 'disabled')
-        console.log(e);
+        submit.innerHTML = "<div class='loader'><span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Chargement...</div >";
+        submit.disabled = true;
     })
 
 }
+

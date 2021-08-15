@@ -17,3 +17,4 @@ import './bootstrap';
 import './flash_timeout'
 import './image_preview'
 import './upload_form'
+import './sound_constraint'

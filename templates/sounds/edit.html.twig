@@ -14,9 +14,12 @@
 		{{form_row(form.titre)}}
 		{{form_row(form.description)}}
 		{{form_row(form.soundFile)}}
+		<p id="errorExtSound" class="text-danger h5 text-center d-none">Attention votre fichier n'est pas fichier audio valide(MP3/AAC/OGG)</p>
 		{{form_row(form.type)}}
 		{{form_row(form.download)}}
-		<input id="uploadBtn" type="submit" class="btn btn-block btn-success" formnovalidate>
+		<button type="submit" formnovalidate class="btn btn-primary btn-block" id="uploadBtn">
+			Envoyer
+		</button>
 		{{form_end(form)}}
 	</div>
 
