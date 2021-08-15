@@ -48,6 +48,7 @@ class SoundsController extends AbstractController
                             "audio/mpeg",
                             "audio/ogg",
                             'audio/x-hx-aac-adts',
+                            "audio/mp3",
                         ],
                         'mimeTypesMessage' => 'Votre son doit être au format {{ types }}'
                     ]),

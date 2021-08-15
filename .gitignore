@@ -31,6 +31,7 @@ yarn-error.log
 ###> CUSTOM ###
 audio.key
 /public/uploads/
+gogo.pem
 ###< CUSTOM ###
 ###> liip/imagine-bundle ###
 /public/media/cache/
