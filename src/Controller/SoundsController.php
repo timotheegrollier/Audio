@@ -185,6 +185,11 @@ class SoundsController extends AbstractController
 
     public function delete(Request $request, Sound $sound, EntityManagerInterface $em): Response
     {
+        if ($this->getUser() != $sound->getUser()) {
+            $this->addFlash('error', 'Vous ne pouvez pas supprimer ce son !');
+            return $this->redirectToRoute('app_home');
+        }
+
         if ($this->isCsrfTokenValid('sound_delete', $request->request->get('csrf_token'))) {
             $em->remove($sound);
             $em->flush();
