@@ -8,14 +8,15 @@
 {% block body %}
 	<div class="container col-md-6 col-10">
 		{{form_start(form)}}
-		<p id="errorExt" class="text-danger h5 text-center d-none">Attention votre fichier n'est pas une image valide</p>
-		<img id="blah" alt="img-preview" class="col-6 mx-auto col-md-6 col-lg-4 mt-3">
+		<p id="errorExtImg" class="text-danger h5 text-center d-none">Attention votre fichier n'est pas une image valide</p>
+		<p id="errorSizeImg" class="text-danger h5 text-center d-none">Attention votre fichier dépasse la limite de 5Mo</p>
+		<img id="imgPreview" alt="img-preview" class="col-6 mx-auto col-md-6 col-lg-4 mt-3">
 		{{form_row(form.imageFile)}}
 		{{form_row(form.titre)}}
 		{{form_row(form.description)}}
 		{{form_row(form.soundFile)}}
 		<p id="errorExtSound" class="text-danger h5 text-center d-none">Attention votre fichier n'est pas fichier audio valide(MP3/AAC/OGG)</p>
-	<p id="errorSizeSound" class="text-danger h5 text-center d-none">Attention votre fichier dépasse la limite de 100Mo</p>
+		<p id="errorSizeSound" class="text-danger h5 text-center d-none">Attention votre fichier dépasse la limite de 100Mo</p>
 		{{form_row(form.type)}}
 		{{form_row(form.download)}}
 		<button type="submit" formnovalidate class="btn btn-primary col-12" id="uploadBtn">

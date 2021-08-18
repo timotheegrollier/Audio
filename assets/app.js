@@ -14,7 +14,7 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 // start the Stimulus application
 import './bootstrap';
 
-// Import Nosleep for upload
+// Declare uploadError pour les erreurs dans les fichiers 
 
 
 
@@ -22,5 +22,4 @@ import './flash_timeout'
 import './image_preview'
 import './upload_form'
 import './sound_constraint'
-
 
