@@ -15,6 +15,7 @@
 		{{form_row(form.description)}}
 		{{form_row(form.soundFile)}}
 		<p id="errorExtSound" class="text-danger h5 text-center d-none">Attention votre fichier n'est pas fichier audio valide(MP3/AAC/OGG)</p>
+	<p id="errorSizeSound" class="text-danger h5 text-center d-none">Attention votre fichier dépasse la limite de 100Mo</p>
 		{{form_row(form.type)}}
 		{{form_row(form.download)}}
 		<button type="submit" formnovalidate class="btn btn-primary col-12" id="uploadBtn">
