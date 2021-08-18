@@ -77,6 +77,7 @@ class SoundsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $sound->setUser($this->getUser());
             $em->persist($sound);
             $em->flush();
             $this->addFlash('success', 'Votre son à bien été uploadé !');
@@ -110,6 +111,10 @@ class SoundsController extends AbstractController
     public function edit(Request $request, Sound $sound, EntityManagerInterface $em): Response
     {
 
+        if ($this->getUser() != $sound->getUser()) {
+            $this->addFlash('error', 'Vous ne pouvez pas éditer ce son !');
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createForm(EditSoundType::class, $sound, ['method' => 'PUT', 'attr' => ['class' => 'uploadForm']]);
         // dd($sound);
         $form->handleRequest($request);

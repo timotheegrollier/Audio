@@ -30,6 +30,9 @@
 							<p>
 								<em>{{sound.type.name}}</em>
 							</p>
+							<h3 class="text-decoration-underline">
+								{{sound.user.name}}
+							</h3>
 						{% endif %}
 					{% endfor %}
 				</div>
@@ -55,6 +58,9 @@
 							<p>
 								<em>{{sound.type.name}}</em>
 							</p>
+							<h3 class="text-decoration-underline">
+								{{sound.user.name}}
+							</h3>
 						{% endif %}
 					{% endfor %}
 				</div>
@@ -66,6 +72,7 @@
 					<img src="{% for key, sound in sounds %}{% if key == 2 %}{{(sound.imageName ? "uploads/covers/" ~ sound.imageName : "build/images/placeholder.png")| imagine_filter('carousel')}}{% endif %}{% endfor %}" class="d-block mx-auto w-100" alt="troisieme img">
 				{% endif %}
 				<div class="carousel-caption d-flex flex-column">
+
 					<h5>
 						<a href="{% for key, sound in sounds %}{% if key == 2 %} {{path('app_listen',{id:sound.id})}}{% endif %}{% endfor %}" class="text-white">
 							{% for key, sound in sounds %}
@@ -80,8 +87,12 @@
 							<p>
 								<em>{{sound.type.name}}</em>
 							</p>
+							<h3 class="text-decoration-underline">
+								{{sound.user.name}}
+							</h3>
 						{% endif %}
 					{% endfor %}
+
 				</div>
 			</div>
 		</div>

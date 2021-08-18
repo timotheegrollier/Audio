@@ -14,7 +14,15 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 // start the Stimulus application
 import './bootstrap';
 
+// Import Nosleep for upload
+
+import NoSleep from 'nosleep.js';
+
+
 import './flash_timeout'
 import './image_preview'
 import './upload_form'
 import './sound_constraint'
+
+
+var noSleep = new NoSleep();
