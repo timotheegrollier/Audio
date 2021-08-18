@@ -16,7 +16,6 @@ import './bootstrap';
 
 // Import Nosleep for upload
 
-import NoSleep from 'nosleep.js';
 
 
 import './flash_timeout'
@@ -25,4 +24,3 @@ import './upload_form'
 import './sound_constraint'
 
 
-var noSleep = new NoSleep();

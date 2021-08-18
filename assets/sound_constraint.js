@@ -5,7 +5,7 @@ if (uploadSound) {
     uploadSound.onchange = (evt) => {
         const [file] = uploadSound.files;
         let fileName = [file][0].name;
-        let extensions = /(\.mp3|\.ogg|\.aac)$/i;
+        let extensions = /(\.mp3|\.ogg|\.aac|\.mpeg|\.oga)$/i;
 
         if (file) {
             // On vérifie l'extension du fichier grace à la regex
