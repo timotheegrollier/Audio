@@ -3,7 +3,9 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
+    img {
+        max-height: 450px;
+    }
     audio {
         position: absolute;
         bottom: 10px;

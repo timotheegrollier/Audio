@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}AUDIO |
-	Profile
+							Profile
 {% endblock %}
 
 {% block body %}
@@ -25,28 +25,28 @@
 			{% endif %}
 		</div>
 
-{# Afficher les sons #}
+		{# Afficher les sons #}
 		<div class="container d-flex justify-content-around flex-column align-items-center flex-wrap flex-md-row">
 			{% for sound in app.user.sounds|sort((a, b) => b.createdAt <=> a.createdAt) %}
-	<div class="card col-12 col-md-6">
-				<a href="{{path('app_listen',{id:sound.id})}}">
+				<div class="card col-12 col-md-6">
+					<a href="{{path('app_listen',{id:sound.id})}}">
 
-					<div class="d-flex justify-content-center card-header w-100 align-items-center">
-						<p>
-							{{sound.createdAt|ago}}
-						</p>
-					</div>
-				
-					<div class="card-body d-flex justify-content-evenly align-items-center">
-						<img class="col-2 shadow" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }} alt="{{sound.titre ~ " image"}}">
+						<div class="d-flex justify-content-center card-header w-100 align-items-center">
+							<p>
+								{{sound.createdAt|ago}}
+							</p>
+						</div>
 
-						<h3>{{ sound.titre }}</h3>
+						<div class="card-body d-flex justify-content-evenly align-items-center">
+							<img class="shadow col-3" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }} alt="{{sound.titre ~ " image"}}">
 
-						<em>{{sound.type.name}}</em>
+							<h3>{{ sound.titre }}</h3>
 
-					</div>
-				</a>
-			</div>
+							<em>{{sound.type.name}}</em>
+
+						</div>
+					</a>
+				</div>
 			{% endfor %}
 
 		</div>

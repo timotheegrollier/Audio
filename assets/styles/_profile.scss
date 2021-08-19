@@ -1,10 +1,9 @@
-#account{
-  
-    a{
-        color:$my-purple;
-       
-    }
-    .card{
-        height: 150px !important;
+#account {
+    a {
+        color: $my-purple;
+        max-height: 265px;
+        img {
+            max-height: 105px;
+        }
     }
 }

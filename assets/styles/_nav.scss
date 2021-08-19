@@ -17,32 +17,35 @@ nav {
             width: 70%;
         }
     }
+    .active {
+        background: none !important;
+    }
 
     // NAV LINKS
     .nav-item {
         animation: 2s ease-in-out;
         .active {
             color: $my-purple !important;
+
             // ANIM uniquement sur les grands écrans
             @media screen and(min-width:768px) {
                 animation: nav-anim 0.2s ease-in-out;
-        transform: scale(1.1);
+                transform: scale(1.1);
             }
         }
-        
-            .dropdown-menu{
-                text-align: center;
-                .active{
-                    font-weight: bold;
+
+        .dropdown-menu {
+            text-align: center;
+            .dropdown-item {
+                background: none !important;
+            }
+            .active {
+                font-weight: bold;
                 animation: none !important;
                 background: none !important;
-                
-                }
             }
-       
+        }
     }
-
- 
 }
 
 // NAV ANIM

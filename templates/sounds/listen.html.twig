@@ -9,18 +9,18 @@
 		<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-2">
 			<h2 class="myp">
 				{{sound.titre}}</h2>
-				<p>
-					Posté par
-					<strong>
-						{% if app.user and app.user.name == sound.user.name %}
+			<p>
+				Posté par
+				<strong>
+					{% if app.user and app.user.name == sound.user.name %}
 						Vous
-						{% else %}
+					{% else %}
 						{{sound.user.name}}
 					{% endif %}
-					</strong>
-					le
-					<em>{{sound.createdAt|date('d/m/Y')}}</em>
-				</p>
+				</strong>
+				le
+				<em>{{sound.createdAt|date('d/m/Y')}}</em>
+			</p>
 			<div class="audio-player col-12 col-lg-6">
 				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-8 h-75 w-75 rounded">
 				<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
