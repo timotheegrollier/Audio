@@ -21,7 +21,7 @@ if (uploadImg) {
       }
 
       // On vérifie son poid
-      if (file[0].size < 5000000) {
+      if (file[0].size < 10000000) {
         errorSize.classList.add("d-none");
       } else {
         errorSize.classList.remove("d-none");
@@ -35,6 +35,8 @@ if (uploadImg) {
         $('#uploadBtn').attr('disabled', 'disabled')
 
       }
+
+      // Pas de fichier pas d'erreur 
     } else {
       errorExt.classList.add("d-none");
       errorSize.classList.add("d-none");

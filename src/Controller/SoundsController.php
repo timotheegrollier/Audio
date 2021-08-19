@@ -64,8 +64,6 @@ class SoundsController extends AbstractController
                 'image_uri' => true,
                 'label' => 'Cover image',
                 'attr' => ['class' => 'form_imageFile_file'],
-
-
             ])
 
             ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
