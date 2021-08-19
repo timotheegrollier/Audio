@@ -5,8 +5,8 @@
 	{{sound.titre}}
 {% endblock %}
 {% block body %}
-	<div class="container-fluid d-flex justify-content-center flex-column">
-		<div class="container d-flex justify-content-around h-75 flex-column align-items-center mt-2">
+	<div class="container-fluid d-flex justify-content-center flex-column h-75">
+		<div class="container d-flex justify-content-around  flex-column align-items-center h-100">
 			<h2 class="myp">
 				{{sound.titre}}</h2>
 			<p>
@@ -21,8 +21,8 @@
 				le
 				<em>{{sound.createdAt|date('d/m/Y')}}</em>
 			</p>
-			<div class="audio-player col-12 col-lg-6">
-				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-8 h-75 w-75 rounded">
+			<div class="audio-player col-12 col-lg-6 h-75">
+				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-10 col-sm-8 h-100 rounded">
 				<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 			</div>
 			<p>{{sound.description}}</p>

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}AUDIO |
-							Profile
+																			Profile
 {% endblock %}
 
 {% block body %}
-	<div id="account">
+	<div id="profile">
 
 		<div class="container d-flex flex-column justify-content-around align-items-center">
 			<h2 class="text-center">{{app.user.name}}</h2>
@@ -38,11 +38,13 @@
 						</div>
 
 						<div class="card-body d-flex justify-content-evenly align-items-center">
-							<img class="shadow col-3" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }} alt="{{sound.titre ~ " image"}}">
+							<img class="shadow col-2" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }} alt="{{sound.titre ~ " image"}}">
 
-							<h3>{{ sound.titre }}</h3>
 
-							<em>{{sound.type.name}}</em>
+							<div class="d-flex flex-column">
+								<h3>{{ sound.titre }}</h3>
+								<em>{{sound.type.name}}</em>
+							</div>
 
 						</div>
 					</a>
