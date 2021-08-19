@@ -14,9 +14,19 @@ textarea {
     color: $my-purple;
 }
 
+
+
+
+// Preview image
 #imgPreview {
     display: none;
     border-radius: 10px;
     height: 100px;
     width: 100px;
+}
+// EDIT
+.vich-image{
+    img {
+        width: 200px;
+    }
 }

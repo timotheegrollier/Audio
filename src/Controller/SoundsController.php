@@ -66,8 +66,8 @@ class SoundsController extends AbstractController
                 'attr' => ['class' => 'form_imageFile_file'],
             ])
 
-            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Name your sound ...', 'autocomplete' => 'off']])
-            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Explain your sound ...', 'autocomplete' => 'off']])
+            ->add('titre', TextType::class, ['attr' => ['placeholder' => 'Titre du son ...', 'autocomplete' => 'off']])
+            ->add('description', TextareaType::class, ['attr' => ['placeholder' => 'Décrivez votre son ...', 'autocomplete' => 'off']])
             ->add('download', CheckboxType::class, ['label' => 'Autoriser les téléchargements'])
             ->add('type', EntityType::class, ['class' => Type::class, 'choice_label' => 'name'])
             ->getForm();

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AUDIO |
+	Profile
+{% endblock %}
+
+{% block body %}
+	<div id="account">
+
+		<div class="container d-flex flex-column justify-content-around align-items-center">
+			<h2 class="text-center">{{app.user.name}}</h2>
+			<img class="rounded-circle col-2" src="{{asset('build/images/profile-placeholder.png')}}" alt="profile pic">
+		</div>
+
+		{# AFFICHER LE NOMBRE DE SONS #}
+		<div class="container d-flex justify-content-center flex-column align-items-center">
+			{% if app.user.sounds|length > 1 %}
+				<h3 class="myp">{{app.user.sounds|length}}
+					Sons :</h3>
+			{% elseif app.user.sounds|length == 1 %}
+				<h3 class="myp">1 Son :</h3>
+			{% else %}
+				<h3 class="myp">Aucun Son :</h3>
+				<a href="{{path('app_sounds_create')}}" class="mt-4 btn btn-success col-6 rounded-pill text-white">Let's Share</a>
+			{% endif %}
+		</div>
+
+{# Afficher les sons #}
+		<div class="container d-flex justify-content-around flex-column align-items-center flex-wrap flex-md-row">
+			{% for sound in app.user.sounds|sort((a, b) => b.createdAt <=> a.createdAt) %}
+	<div class="card col-12 col-md-6">
+				<a href="{{path('app_listen',{id:sound.id})}}">
+
+					<div class="d-flex justify-content-center card-header w-100 align-items-center">
+						<p>
+							{{sound.createdAt|ago}}
+						</p>
+					</div>
+				
+					<div class="card-body d-flex justify-content-evenly align-items-center">
+						<img class="col-2 shadow" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }} alt="{{sound.titre ~ " image"}}">
+
+						<h3>{{ sound.titre }}</h3>
+
+						<em>{{sound.type.name}}</em>
+
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+
+		</div>
+
+	{% endblock %}

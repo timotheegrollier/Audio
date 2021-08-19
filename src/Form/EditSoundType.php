@@ -31,7 +31,7 @@ class EditSoundType extends AbstractType
 
                 'constraints' => [
                     new File([
-                        'maxSize' => '200M',
+                        'maxSize' => '100M',
                         'mimeTypes' => [
                             "audio/mpeg",
                             "audio/ogg",
@@ -45,7 +45,6 @@ class EditSoundType extends AbstractType
                 'attr' => ['class' => 'form_imageFile_file'],
                 'label' => 'Image (JPG or PNG file)',
                 'required' => false,
-                'imagine_pattern' => 'edit_img',
                 'allow_delete' => true,
                 'download_uri' => false,
             ])

@@ -15,16 +15,27 @@
 				<li class="nav-item">
 					<a {% if route_name == "app_home" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href=" {{path('app_home')}} ">Home</a>
 				</li>
+
 				<li class="nav-item">
 					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen" or route_name == "app_sounds_search"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
 				</li>
-
 				{% if app.user %}
+					<li class="nav-item dropdown">
+						<a {% if route_name == "app_user_profile" %} class="nav-link dropdown-toggle active" {% else %} class="nav-link dropdown-toggle" {% endif %} href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Compte
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li>
+								<a {% if route_name == "app_user_profile" %} class="dropdown-item active" {% else %} class="dropdown-item" {% endif %} href=" {{path('app_user_profile')}} ">Profil</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href=" {{path('app_logout')}} ">Déconnexion</a>
+							</li>
+						</ul>
+					</li>
+
 					<li class="nav-item">
 						<a {% if route_name == "app_sounds_create" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_create')}} ">Upload</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href=" {{path('app_logout')}} ">Déconnexion</a>
 					</li>
 				{% else %}
 					<li class="nav-item">
@@ -33,7 +44,9 @@
 					<li class="nav-item">
 						<a {% if route_name == "app_register" %} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_register')}} ">Inscription</a>
 					</li>
+
 				{% endif %}
+
 			</li>
 		</div>
 	</div>

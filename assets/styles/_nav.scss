@@ -26,10 +26,23 @@ nav {
             // ANIM uniquement sur les grands écrans
             @media screen and(min-width:768px) {
                 animation: nav-anim 0.2s ease-in-out;
-                transform: scale(1.1);
+        transform: scale(1.1);
             }
         }
+        
+            .dropdown-menu{
+                text-align: center;
+                .active{
+                    font-weight: bold;
+                animation: none !important;
+                background: none !important;
+                
+                }
+            }
+       
     }
+
+ 
 }
 
 // NAV ANIM

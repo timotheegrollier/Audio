@@ -21,7 +21,7 @@
 					</p>
 				</div>
 				<a href="{{path('app_listen',{id:sound.id})}}" class="d-flex justify-content-center align-items-center col-xl-6 col-8 rounded">
-					<img class="w-100 shadow" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('list_img')}} alt="{{sound.titre ~ " image"}}">
+					<img class="w-100 shadow" src={{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png'))}} alt="{{sound.titre ~ " image"}}">
 				</a>
 				<div class="card-body">
 

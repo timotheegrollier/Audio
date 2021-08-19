@@ -10,7 +10,7 @@
 			<h2 class="myp">
 				{{sound.titre}}</h2>
 				<p>
-					posté par
+					Posté par
 					<strong>
 						{% if app.user and app.user.name == sound.user.name %}
 						Vous
@@ -22,7 +22,7 @@
 					<em>{{sound.createdAt|date('d/m/Y')}}</em>
 				</p>
 			<div class="audio-player col-12 col-lg-6">
-				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) | imagine_filter('player_img')}}" alt="{{sound.titre}}" class="col-8 h-75 rounded">
+				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-8 h-75 w-75 rounded">
 				<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 			</div>
 			<p>{{sound.description}}</p>
