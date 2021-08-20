@@ -1,14 +1,23 @@
-.audio-player {
+#listen {
+    height: 80%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    @media screen and (max-width: 576px) {
-        max-height: 60%;
-    }
-
-    audio {
-        position: absolute;
-        bottom: 10px;
+    flex-direction: column;
+    .audio-player {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 60%;
+        img {
+            object-fit: cover;
+        }
+        audio {
+            position: absolute;
+            bottom: 10px;
+            @media screen and (max-width: 310px) {
+                width: 100%;
+            }
+        }
     }
 }

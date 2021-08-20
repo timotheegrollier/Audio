@@ -5,44 +5,39 @@
 	{{sound.titre}}
 {% endblock %}
 {% block body %}
-	<div class="container-fluid d-flex justify-content-center flex-column h-75">
-		<div class="container d-flex justify-content-around  flex-column align-items-center h-100">
-			<h2 class="myp">
-				{{sound.titre}}</h2>
-			<p>
-				Posté par
-				<strong>
-					{% if app.user and app.user.name == sound.user.name %}
-						Vous
-					{% else %}
-						{{sound.user.name}}
-					{% endif %}
-				</strong>
-				le
-				<em>{{sound.createdAt|date('d/m/Y')}}</em>
-			</p>
-			<div class="audio-player col-12 col-lg-6 h-75">
-				<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-10 col-sm-8 h-100 rounded">
-				<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
-			</div>
-			<p>{{sound.description}}</p>
-			{% if app.user and app.user.email == sound.user.email %}
-				<div class="btn-group mt-2 col-12 col-lg-6">
-					<a href="{{path('app_sounds_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
-					<a href="#" onclick="event.preventDefault(); confirm('Confirmer la supression ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
-				</div>
-			{% endif %}
-
+	<div class="container d-flex justify-content-around  flex-column align-items-center" id="listen">
+		<h2 class="myp">
+			{{sound.titre}}</h2>
+		<p>
+			Posté par
+			<strong>
+				{% if app.user and app.user.name == sound.user.name %}
+					Vous
+				{% else %}
+					{{sound.user.name}}
+				{% endif %}
+			</strong>
+			le
+			<em>{{sound.createdAt|date('d/m/Y')}}</em>
+		</p>
+		<div class="audio-player col-12 col-lg-6">
+			<img src="{{(sound.imageName ? "/uploads/covers/" ~ sound.imageName : asset('build/images/placeholder.png')) }}" alt="{{sound.titre}}" class="col-10 col-sm-8 h-100 rounded">
+			<audio {% if sound.download == false or app.user == null %} controlslist="nodownload" {% endif %} controls src="/uploads/sounds/{{sound.soundName}}"></audio>
 		</div>
+		<p>{{sound.description}}</p>
+		{% if app.user and app.user.email == sound.user.email %}
+			<div class="btn-group mt-2 col-12 col-lg-6">
+				<a href="{{path('app_sounds_edit',{id:sound.id})}}" class="btn btn-info col-6">Edit</a>
+				<a href="#" onclick="event.preventDefault(); confirm('Confirmer la supression ?') && document.getElementById('delete_sound').submit()" class="btn btn-danger col-6 delete-btn">Delete</a>
+			</div>
+		{% endif %}
 
 
+		<form id="delete_sound" method="post" style="display:none;" action="{{path('app_sounds_delete', {id:sound.id})}}">
+			<input type="hidden" name="_method" value="DELETE">
+			<input type="hidden" name="csrf_token" value="{{csrf_token('sound_delete')}}">
+			<input type="submit" value="DELETE">
+		</form>
 	</div>
-
-
-	<form id="delete_sound" method="post" style="display:none;" action="{{path('app_sounds_delete', {id:sound.id})}}">
-		<input type="hidden" name="_method" value="DELETE">
-		<input type="hidden" name="csrf_token" value="{{csrf_token('sound_delete')}}">
-		<input type="submit" value="DELETE">
-	</form>
 
 {% endblock %}

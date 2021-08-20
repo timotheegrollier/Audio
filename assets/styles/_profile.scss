@@ -1,9 +1,18 @@
 #profile {
+    height: 80%;
     a {
         color: $my-purple;
-        max-height: 265px;
+        .card {
+            background: #b9b9b9 !important;
+        }
         img {
-            max-height: 15vh;
+            object-fit: cover;
+            height: 150px;
+            width: 150px;
+            @media screen and(max-width:350px) {
+                height: 100px;
+                width: 100px;
+            }
         }
     }
 }
