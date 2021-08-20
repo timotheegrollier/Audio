@@ -21,6 +21,10 @@ class AccountController extends AbstractController
      */
     public function userAccount(): Response
     {
+        if ($this->getUser() == null) {
+            $this->addFlash('error', 'Vous devez être connécté pour accéder à cette page');
+            return $this->redirectToRoute('app_home');
+        }
         return $this->render('account/user_account.html.twig');
     }
 
@@ -30,6 +34,10 @@ class AccountController extends AbstractController
      */
     public function accountEdit(EntityManagerInterface $em, Request $request): Response
     {
+        if ($this->getUser() == null) {
+            $this->addFlash('error', 'Vous devez être connécté pour accéder à cette page');
+            return $this->redirectToRoute('app_home');
+        }
         $user = $this->getUser();
         $form = $this->createFormBuilder($user)
             ->add('name', TextType::class, ['label' => 'Pseudo', 'attr' => ['autocomplete' => 'disabled']])
