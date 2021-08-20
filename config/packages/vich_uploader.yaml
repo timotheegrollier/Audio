@@ -7,8 +7,12 @@ vich_uploader:
            upload_destination: '%kernel.project_dir%/public/uploads/covers'
            delete_on_update: true
            delete_on_remove: true
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
        sounds:
            uri_prefix: /uploads/sounds
            upload_destination: '%kernel.project_dir%/public/uploads/sounds'
            delete_on_update: true
            delete_on_remove: true
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           

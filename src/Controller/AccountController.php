@@ -36,10 +36,10 @@ class AccountController extends AbstractController
             ->add('email', EmailType::class)
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "J'ai lu et j'accepte les conditons d'utilisations",
+                'label' => "Confirmation",
                 'constraints' => [
                     new IsTrue([
-                        'message' => "Vous devez acceptez les conditions d'utilisation !",
+                        'message' => "Vous devez confirmez !",
                     ]),
                 ],
             ])
