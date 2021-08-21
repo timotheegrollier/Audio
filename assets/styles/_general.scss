@@ -14,9 +14,6 @@ textarea {
     color: $my-purple;
 }
 
-
-
-
 // Preview image
 #imgPreview {
     display: none;
@@ -25,8 +22,9 @@ textarea {
     width: 100px;
 }
 // EDIT
-.vich-image{
+.vich-image {
     img {
         width: 200px;
+        height: 200px;
     }
 }
