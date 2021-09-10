@@ -19,6 +19,15 @@ class SoundRepository extends ServiceEntityRepository
         parent::__construct($registry, Sound::class);
     }
 
+    public function searchBar($title)
+    {
+        return $this->createQueryBuilder('Sound')
+            ->andWhere('Sound.titre LIKE :title')
+            ->setParameter('title', '%' . $title . '%')
+            ->getQuery()
+            ->execute();
+    }
+
     // /**
     //  * @return Sound[] Returns an array of Sound objects
     //  */

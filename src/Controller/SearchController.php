@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Csrf\CsrfToken;
 
 class SearchController extends AbstractController
 {
@@ -49,6 +50,34 @@ class SearchController extends AbstractController
         return $this->render('sounds/list.html.twig', [
             'sounds' => $sounds,
             'search_form' => $searchForm->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("sounds/searchbar/", name="app_search_bar" , methods="GET")
+     */
+    public function searchBar(Request $request, SoundRepository $soundRepository, PaginatorInterface $paginator): Response
+    {
+
+        $soundTitle = $request->query->get('title');
+        $lastRoute = $request->headers->get('referer');
+        if ($this->isCsrfTokenValid('sound_search', $request->query->get('csrf_token'))) {
+            if ($soundTitle != null) {
+                $soundTitle = htmlspecialchars(strip_tags($soundTitle));
+            } else {
+                $this->addFlash('info', 'Aucun titre');
+                return $this->redirect($lastRoute);
+            }
+        }
+        $donnees = $soundRepository->searchBar($soundTitle);
+        $sounds = $paginator->paginate(
+            $donnees,
+            $request->query->getInt('page', 1),
+            4
+        );
+        return $this->render('sounds/search.html.twig', [
+            'sounds' => $sounds
         ]);
     }
 }

@@ -6,12 +6,20 @@
 				<img src="{{asset('/build/images/logo.png')}}" alt="logo">
 			</a>
 			<h1 class="h3 d-none d-sm-flex justify-content-center align-items-center">AUDIO</h1>
+			<form class="mx-3 d-flex" method="GET" action={{path('app_search_bar')}}>
+				<input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" name="title">
+				<button class="btn btn-outline-success" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+				<input type="hidden" name="csrf_token" value="{{csrf_token('sound_search')}}">
+			</form>
 		</div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
 				<li class="nav-item">
 					<a {% if route_name == "app_home" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href=" {{path('app_home')}} ">Home</a>
 				</li>
