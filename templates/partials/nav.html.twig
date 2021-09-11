@@ -6,7 +6,7 @@
 				<img src="{{asset('/build/images/logo.png')}}" alt="logo">
 			</a>
 			<h1 class="h3 d-none d-sm-flex justify-content-center align-items-center">AUDIO</h1>
-			<form class="mx-3 d-flex" method="GET" action={{path('app_search_bar')}}>
+			<form class="mx-3 d-md-flex d-none" method="GET" action={{path('app_search_bar')}}>
 				<input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" name="title">
 				<button class="btn btn-outline-success" type="submit">
 					<i class="fas fa-search"></i>
@@ -58,6 +58,13 @@
 				<li class="nav-item">
 					<a {% if route_name == "app_sounds_list" or route_name == "app_sounds_edit" or route_name == "app_listen" or route_name == "app_sounds_search"%} class="nav-link active" {% else %} class="nav-link" {% endif %} href=" {{path('app_sounds_list')}} ">Parcourir</a>
 				</li>
+				<form class="mx-3 d-md-none d-flex" method="GET" action={{path('app_search_bar')}}>
+					<input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" name="title">
+					<button class="btn btn-outline-success" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+					<input type="hidden" name="csrf_token" value="{{csrf_token('sound_search')}}">
+				</form>
 
 			</li>
 		</div>
